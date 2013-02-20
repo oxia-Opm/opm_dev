@@ -12,12 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class action_projet
 {
 
-  /**
-   * @ORM\Id
-   * @ORM\Column(type="integer")
-   */
-  private $action_id;
-
 }
 
 /*
