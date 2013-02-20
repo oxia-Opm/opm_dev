@@ -1,0 +1,3 @@
+
+imports:
+    - { resource: "@OpmTestBundle/Resources/config/security.yml" }

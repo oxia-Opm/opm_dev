@@ -1,0 +1,45 @@
+{% extends 'OpmTestBundle::layout.html.twig'%}
+
+
+  {% block title%}{{ 'user.list.title'|trans({}, 'FOSUserBundle') }}{% endblock%}
+{% block content %}
+  <script>
+      var gVarSort='';///global variable de tri 
+      var gSensSort=true;// global sens de tri "true=sens desc"
+    $(document).ready(function()
+    {
+
+      setInterval("refresh()",120000);
+    });
+  function refresh(){
+    $("#divListUser").css({ opacity: 0.5 });
+    $(".loading").show();
+    $.ajax({
+      type: "POST",
+      url: "{{ path('opm_test_ajax_list_user')}}",
+      data:"page=1",
+      cache: false,
+      success: function(data){
+        $('#divListUser').html(data);
+        $(".loading").hide();
+        $("#divListUser").css({ opacity: 1 });
+      }
+    });
+  }
+  </script>
+  <style>
+    .img_arrow_list
+    {
+      display:none;
+    }
+</style>
+<h3 style="color:red" align="center">{{ 'user.list.title'|trans({}, 'FOSUserBundle') }}</h3>
+<span style="color:green">{{ message }}</span>
+<div id="divListUser">
+     {% include 'OpmTestBundle:Test:_liste.html.twig' with {'users':users,
+            'page':page,
+            'nb_pages':nb_pages} %}
+</div>
+<a href="{{path('test_add_user')}}">{{ 'user.list.add_user'|trans({}, 'FOSUserBundle') }}</a>
+
+{% endblock%}

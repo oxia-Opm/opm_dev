@@ -1,0 +1,7 @@
+parameters:
+#    opm_test.example.class: Opm\TestBundle\Example
+
+services:
+#    opm_test.example:
+#        class: %opm_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

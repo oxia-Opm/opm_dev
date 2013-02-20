@@ -1,0 +1,46 @@
+opm_test_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: OpmTestBundle:Default:index }
+opm_test_list_user:
+    pattern:  /user
+    defaults: { _controller: OpmTestBundle:Test:index }    
+opm_test_ajax_list_user:
+    pattern:  /user/ajax/list
+    defaults: { _controller: OpmTestBundle:Test:index }
+    requirements:
+      _method: POST
+
+test_edit_user:
+    pattern:  user/edit/{id}
+    defaults: { _controller: OpmTestBundle:Test:modif}
+test_drop_user:
+    pattern:  user/drop/{id}
+    defaults: { _controller: OpmTestBundle:Test:index }
+test_add_user:
+    pattern:  user/new
+    defaults: { _controller: OpmTestBundle:Test:ajout }
+    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password
+
+opm_traduction:
+      pattern:  traduction/{langue}
+      defaults: { _controller: OpmTestBundle:Test:traduction }
+  
+  

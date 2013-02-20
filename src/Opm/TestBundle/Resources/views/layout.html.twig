@@ -1,0 +1,43 @@
+<html>
+    <head>
+      
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+       <link rel="stylesheet" href="{{ asset('bundles/OpmTest/css/main.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/OpmTest/css/smoothness/jquery-ui-1.9.2.custom.min.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/OpmTest/css/bootstrap.css') }}" type="text/css" media="all" />
+        <script src="{{ asset('bundles/OpmTest/js/jquery-1.8.3.js') }}"></script>
+        <script src="{{ asset('bundles/OpmTest/js/jquery-ui-1.9.2.custom.js') }}"></script>
+        <title>{% block title %}My App{% endblock %}</title>
+        <style>
+    td{
+        border: 1px #ccc solid;
+        }
+        th{
+        border: 1px #ccc solid;
+        
+        }
+        table{
+          border-collapse:collapse;
+          }
+        </style>
+    </head>
+    <body>
+      <div id="connexion" align="right">
+    {% include "OpmUtilisateurBundle::connexion.html.twig" %}
+</div>
+        <div id="header" >
+          <div style="margin-left:200px"><img src="{{ asset('bundles/OpmTest/images/logo.gif') }}" alt="Oxia" /></div>
+          <div align="center">
+            {% block content_header %}                
+                <ul id="menu">                  
+                </ul>
+            {% endblock %}
+          </div>
+        </div>
+        
+        <div id="content" align="center">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

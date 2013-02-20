@@ -1,0 +1,10 @@
+
+coresphere_console:
+    headline:
+        index: "Console"
+    working_directory: 'Développement'
+    environment: 'Environnement'
+    welcome_message: 'Tapez "%command%" pour voir la list de tous les commandes.'
+    loading: 'chargemnt...'
+    suggestion_head: 'voulez-vous dire:'
+    empty_response: 'Complete!'

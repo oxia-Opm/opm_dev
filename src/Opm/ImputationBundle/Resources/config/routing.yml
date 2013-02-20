@@ -1,0 +1,3 @@
+OpmImputationBundle_homepage:
+    pattern:  /imputation/{name}
+    defaults: { _controller: OpmImputationBundle:Default:index }

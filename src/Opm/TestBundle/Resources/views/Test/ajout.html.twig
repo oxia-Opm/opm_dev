@@ -1,0 +1,50 @@
+{% extends 'OpmTestBundle::layout.html.twig'%}
+
+  {% block title%}Nouveau User{% endblock%}
+{% block content %} 
+<h3 style="color:red" align="center">Nouveau User</h3>
+  
+</style>
+<form action="" method="POST" id="user_form">
+        {{ form_errors(form) }}
+    <table>
+      <tr>
+        <td> {{ form_label(form.nom, 'user.list.name'|trans({}, 'FOSUserBundle')~':' ) }}</td>
+        <td class="td_form_user"> {{ form_errors(form.nom) }}{{ form_widget(form.nom) }}</td>
+      </tr>
+       <tr>
+        <td> {{ form_label(form.nom, 'user.list.first_name'|trans({}, 'FOSUserBundle')~':' ) }}</td>
+        <td class="td_form_user"> {{ form_errors(form.prenom) }}{{ form_widget(form.prenom) }}</td>
+      </tr>
+       <tr>
+        <td> {{ form_label(form.age) }}</td>
+        <td class="td_form_user"> {{ form_errors(form.age) }}{{ form_widget(form.age) }}</td>
+      </tr>
+      <tr>
+        <td> {{ form_label(form.login) }}</td>
+        <td class="td_form_user"> {{ form_errors(form.login) }}{{ form_widget(form.login) }}</td>
+      </tr>
+      <tr>
+        <td> {{ form_label(form.pwd) }}</td>
+        <td class="td_form_user"> {{ form_errors(form.pwd) }}{{ form_widget(form.pwd) }}</td>
+      </tr>
+      <tr>
+        <td>Grade:</td>
+        <td class="td_form_user"> {{ form_errors(form.Fonction) }}{{ form_widget(form.Fonction) }}</td>
+      </tr>
+      
+      </table>
+
+        {{ form_rest(form) }}
+      <input type="submit" value="Envoyer" class="btn" />
+    </form>
+    <a href="{{path('opm_test_list_user')}}">List</a>
+     <script>
+	$(function() {
+		$( "#opm_testbundle_userstype_age" ).datepicker({
+			dateFormat: "dd-mm-yy"
+		});
+	});
+	</script>
+{% endblock%}
+   

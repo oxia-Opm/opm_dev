@@ -1,0 +1,70 @@
+{# empty Twig template #}
+
+<script>
+  function ajaxPagination(p,varSort) 
+  {
+    if(varSort!='' )
+    {
+      gVarSort=varSort;
+      gSensSort=!gSensSort;
+    }
+    var p=p;
+    $("#divListUser").css({ opacity: 0.5 });
+    $(".loading").show();
+      $.ajax({
+      type: "POST",
+      url: "{{ path('opm_test_ajax_list_user')}}",
+      data:"page="+p+"&varSort="+gVarSort+"&sensSort="+gSensSort,
+      cache: false,
+      success: function(data){
+        $('#divListUser').html(data);
+        $(".loading").hide();
+        $("#divListUser").css({ opacity: 1 });
+        $(".img_arrow_list").hide();
+        if(gSensSort)
+        {
+          $("#arrow_"+varSort).attr("src","{{ asset('bundles/OpmTest/images/arrow_down.png') }}");
+        }else
+        {
+          $("#arrow_"+varSort).attr("src","{{ asset('bundles/OpmTest/images/arrow_up.png') }}");
+        }
+        $("#arrow_"+varSort).show();
+      }
+    });
+    
+  }
+</script>
+
+<div align="right" style="margin-right:400px"><a href="javascript:void(0)" onclick="refresh()" >{{ 'user.list.refresh'|trans({}, 'FOSUserBundle') }}</a></div>
+<img src="{{ asset('bundles/OpmTest/images/loading.gif') }}" style="display:none;widh:40px; index:2000; position: absolute"  class="loading" >
+<table class="tab_list">
+      <tr><th><img class="img_arrow_list"  id="arrow_nom"><a href="javascript:void(0)" onClick="ajaxPagination(1,'nom') " style="color:#000"> {{ 'user.list.name'|trans({}, 'FOSUserBundle') }}</a></th><th><img class="img_arrow_list"  id="arrow_prenom" src=""><a href="javascript:void(0)" onClick="ajaxPagination(1,'prenom') " style="color:#000">{{ 'user.list.first_name'|trans({}, 'FOSUserBundle') }}</a></th>
+        <th><img class="img_arrow_list"  id="arrow_age" src=""><a href="javascript:void(0)" onClick="ajaxPagination(1,'age')" style="color:#000" >{{ 'user.list.birth'|trans({}, 'FOSUserBundle') }}</a></th><th>{{ 'user.list.update'|trans({}, 'FOSUserBundle') }}</th><th>{{ 'user.list.delete'|trans({}, 'FOSUserBundle') }}</th></tr>
+    {% for user in users %}
+      <tr>
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td>{{ user.age }}</td>
+      <td align="center"><a href="{{ path('test_edit_user',{'id':user.id})}}" ><img src="{{ asset('bundles/OpmTest/images/edit.png') }}" alt="{{ 'user.list.update'|trans({}, 'FOSUserBundle') }}" title="{{ 'user.list.update'|trans({}, 'FOSUserBundle') }}"/></a></td>
+      <td align="center"><a href="{{ path('test_drop_user',{'id':user.id})}}" onclick="return confirm('{{ 'user.list.drop_msg'|trans({}, 'FOSUserBundle') }}');"><img src="{{ asset('bundles/OpmTest/images/drop.png') }}" alt="{{ 'user.list.delete'|trans({}, 'FOSUserBundle') }}" title="{{ 'user.list.delete'|trans({}, 'FOSUserBundle') }}"/></a></td>
+      </tr>
+   
+    {%else%}
+      
+      <tr><td colspan="5" align="center">Aucun User n'a été trouvé. </td></tr>
+    {%endfor%}
+      
+       
+</table>
+ <div class="pagination">
+    	<ul>
+    		{# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+                {% if( nb_pages>1 ) %}
+                  {% for p in range(1, nb_pages) %}
+                          <li{% if p == page %} class="active"{% endif %}>
+                            <a href="javascript:void(0)" onclick="ajaxPagination('{{ p }}','','')">{{ p }}</a>
+                          </li>
+                  {% endfor %}
+                {% endif %}
+    	</ul>
+    </div>  
