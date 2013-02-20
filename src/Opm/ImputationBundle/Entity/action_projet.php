@@ -13,6 +13,7 @@ class action_projet
 {
 
   /**
+   * @ORM\GeneratedValue(strategy="AUTO")
    * @ORM\Id
    * @ORM\Column(type="integer")
    */

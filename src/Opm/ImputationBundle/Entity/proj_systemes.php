@@ -9,10 +9,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Opm\ImputationBundle\Entity\proj_systemesRepository")
  */
-class action_projet
+class proj_systemes
 {
 
-  /**
+ /**
+   * @ORM\GeneratedValue(strategy="AUTO")
    * @ORM\Id
    * @ORM\Column(type="integer")
    */
@@ -155,12 +156,6 @@ class action_projet
    * @Assert\Blank()
    */
   private $user_id;
-  
-  /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
-   */
-  private $projet_id;
   
 }
 
