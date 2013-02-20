@@ -43,14 +43,14 @@ class Requetes
   private $composant_id;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="req_symptomes")
+   * @ORM\JoinColumn(name="symptome_id", referencedColumnName="symptome_id", nullable=true)
    */
   private $symptome_id;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\NotBlank()
+   * @ORM\ManyToOne(targetEntity="req_statut")
+   * @ORM\JoinColumn(name="statut_id", referencedColumnName="statut_id", nullable=true)
    */
   private $statut_id;
 
@@ -66,14 +66,14 @@ class Requetes
   private $phase_id;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="req_severites")
+   * @ORM\JoinColumn(name="severite_id", referencedColumnName="severite_id", nullable=true)
    */
   private $severite_id;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="req_priorites")
+   * @ORM\JoinColumn(name="priorite_id", referencedColumnName="priorite_id", nullable=true)
    */
   private $priorite_id;
 
@@ -204,26 +204,26 @@ class Requetes
   private $piece_jointe;
 
   /**
-   * @ORM\Column(type="string", nullable=true, length=30)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="users")
+   * @ORM\JoinColumn(name="geree_par", referencedColumnName="user_id", nullable=true)
    */
   private $geree_par;
 
   /**
-   * @ORM\Column(type="string", nullable=true, length=30)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="users")
+   * @ORM\JoinColumn(name="affectee_a_ana", referencedColumnName="user_id", nullable=true)
    */
   private $affectee_a_ana;
 
   /**
-   * @ORM\Column(type="string", nullable=true, length=30)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="users")
+   * @ORM\JoinColumn(name="affectee_a_res", referencedColumnName="user_id", nullable=true)
    */
   private $affectee_a_res;
 
   /**
-   * @ORM\Column(type="string", nullable=true, length=30)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="users")
+   * @ORM\JoinColumn(name="testee_par", referencedColumnName="user_id", nullable=true)
    */
   private $testee_par;
 
@@ -234,8 +234,8 @@ class Requetes
   private $demandee_par;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="clients")
+   * @ORM\JoinColumn(name="client_id", referencedColumnName="client_id", nullable=true)
    */
   private $client_id;
 
@@ -336,8 +336,8 @@ class Requetes
   private $phases_id;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="gp_fournisseur")
+   * @ORM\JoinColumn(name="fournisseur_id", referencedColumnName="fournisseur_id", nullable=true)
    */
   private $fournisseur_id;
 
@@ -462,8 +462,8 @@ class Requetes
   private $date_fin_garantie;
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
+   * @ORM\ManyToOne(targetEntity="categorie_requete")
+   * @ORM\JoinColumn(name="categorie_id", referencedColumnName="categorie_id", nullable=true)
    */
   private $categorie_id;
 
