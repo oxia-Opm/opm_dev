@@ -20,6 +20,36 @@ class action_projet
   private $action_id;
   
   /**
+   * @ORM\Id
+   * @ORM\ManyToOne(targetEntity="syst_phase")
+   * @ORM\JoinColumn(name="systeme_id", referencedColumnName="systeme_id", nullable=false)
+   * @Assert\NotBlank()
+   */
+  private $systeme_id;
+  
+   /**
+   * @ORM\Id 
+   * @ORM\ManyToOne(targetEntity="syst_phase")
+   * @ORM\JoinColumn(name="phase_id", referencedColumnName="phase_id", nullable=false)
+   * @Assert\NotBlank()
+   */
+  private $phase_id;
+  
+  /**
+   * @ORM\ManyToOne(targetEntity="requete")
+   * @ORM\JoinColumn(name="requete_id", referencedColumnName="requete_id", nullable=false)
+   * @Assert\NotBlank()
+   */
+  private $requete_id;
+  
+  /**
+   * @ORM\ManyToOne(targetEntity="users")
+   * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", nullable=true)
+   * @Assert\Blank()
+   */
+  private $users_id;
+  
+  /**
    * @ORM\Column(type="string", length=250)
    * @Assert\Blank()
    */
@@ -49,19 +79,6 @@ class action_projet
    */
   private $statut_id;
   
-  /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\NotBlank()
-   */
-  private $systeme_id;
-  
-   /**
-   * @ORM\ManyToOne(targetEntity="requete")
-   * @ORM\JoinColumn(name="requete_id", referencedColumnName="requete_id", nullable=false)
-   * @Assert\NotBlank()
-   */
-  private $requete_id;
-  
    /**
    * @ORM\Column(type="integer", nullable=true)
    * @Assert\Blank()
@@ -74,20 +91,6 @@ class action_projet
    */
   private $note;
   
-  /**
-   * @ORM\ManyToOne(targetEntity="users")
-   * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", nullable=true)
-   * @Assert\Blank()
-   */
-  private $users_id;
-  
-   /**
-   * @ORM\ManyToOne(targetEntity="syst_phase")
-   * @ORM\JoinColumn(name="phase_id", referencedColumnName="phase_id", nullable=false)
-   * @Assert\NotBlank()
-   */
-  private $phase_id;
-  
    /**
    * @ORM\Column(type="integer", nullable=true)
    * @Assert\Blank()
@@ -99,12 +102,6 @@ class action_projet
    * @Assert\Blank()
    */
   private $visible_client;
-  
-  /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
-   */
-  private $suivi_projet_id;
   
   /**
    * @ORM\Column(type="integer", nullable=true)

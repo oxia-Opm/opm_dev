@@ -20,16 +20,24 @@ class proj_systemes
   private $systeme_id;
   
   /**
+   * @ORM\ManyToOne(targetEntity="projets")
+   * @ORM\JoinColumn(name="projet_id", referencedColumnName="projet_id", nullable=true)
+   * @Assert\Blank()
+   */
+  private $projet_id;
+  
+  /**
+   * @ORM\ManyToOne(targetEntity="type_systeme")
+   * @ORM\JoinColumn(name="type_id", referencedColumnName="type_id", nullable=true)
+   * @Assert\Blank()
+   */
+  private $type_id;
+  
+  /**
    * @ORM\Column(type="string", length=250)
    * @Assert\Blank()
    */
   private $description;
-  
-  /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
-   */
-  private $type_id;
   
   /**
    * @ORM\Column(type="integer", nullable=true)
@@ -110,22 +118,25 @@ class proj_systemes
   private $def_systeme_id;
   
   /**
-   * @ORM\Column(type="integer", nullable=true)
+   * @ORM\ManyToOne(targetEntity="bu")
+   * @ORM\JoinColumn(name="bu_id", referencedColumnName="bu_id", nullable=true)
    * @Assert\Blank()
    */
   private $bu_id;
   
    /**
-   * @ORM\Column(type="integer", nullable=true)
+   * @ORM\ManyToOne(targetEntity="ba")
+   * @ORM\JoinColumn(name="ba_id", referencedColumnName="ba_id", nullable=true)
    * @Assert\Blank()
    */
   private $ba_id;
   
-   /**
-   * @ORM\Column(type="integer", nullable=true)
+  /**
+   * @ORM\ManyToOne(targetEntity="centres")
+   * @ORM\JoinColumn(name="centre_id", referencedColumnName="centre_id", nullable=true)
    * @Assert\Blank()
    */
-  private $projet_id;
+  private $centre_id;
   
   /**
    * @ORM\Column(type="integer", nullable=true)
@@ -138,12 +149,6 @@ class proj_systemes
    * @Assert\Blank()
    */
   private $interne;
-  
-   /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
-   */
-  private $centre_id;
   
   /**
    * @ORM\Column(type="string", length=8, nullable=true)

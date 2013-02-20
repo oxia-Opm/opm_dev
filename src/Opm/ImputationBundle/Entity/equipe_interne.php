@@ -13,27 +13,33 @@ class equipe_interne
 {
 
   /**
-   * @ORM\GeneratedValue(strategy="AUTO")
    * @ORM\Id
-   * @ORM\Column(type="integer")
+   * @ORM\ManyToOne(targetEntity="users")
+   * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", nullable=false)
+   * @Assert\NotBlank()
    */
   private $user_id;
 
   /**
+   * @ORM\Id
    * @ORM\Column(type="integer" , nullable=true)
    * @Assert\Blank()
    */
   private $fonction_id;
   
   /**
-   * @ORM\Column(type="integer" , nullable=true)
-   * @Assert\Blank()
+   * @ORM\Id
+   * @ORM\ManyToOne(targetEntity="syst_phase")
+   * @ORM\JoinColumn(name="systeme_id", referencedColumnName="systeme_id", nullable=false)
+   * @Assert\NotBlank()
    */
   private $systeme_id;
   
   /**
-   * @ORM\Column(type="integer" , nullable=true)
-   * @Assert\Blank()
+   * @ORM\Id
+   * @ORM\ManyToOne(targetEntity="syst_phase")
+   * @ORM\JoinColumn(name="phases_id", referencedColumnName="phase_id", nullable=false)
+   * @Assert\NotBlank()
    */
   private $phases_id;
   
@@ -42,6 +48,13 @@ class equipe_interne
    * @Assert\Blank()
    */
   private $profil_id;
+  
+   /**
+   * @ORM\ManyToOne(targetEntity="articles")
+   * @ORM\JoinColumn(name="article_id", referencedColumnName="article_id", nullable=false)
+   * @Assert\NotBlank()
+   */
+  private $article_id;
   
    /**
    * @ORM\Column(type="integer" , nullable=true)
@@ -102,12 +115,6 @@ class equipe_interne
    * @Assert\Blank()
    */
   private $gest_severite;
-  
-  /**
-   * @ORM\Column(type="integer", nullable=true)
-   * @Assert\Blank()
-   */
-  private $article_id;
   
   /**
    * @ORM\Column(type="string", length=250 nullable=true)
