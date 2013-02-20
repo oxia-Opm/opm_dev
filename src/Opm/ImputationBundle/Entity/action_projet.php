@@ -31,13 +31,13 @@ class action_projet
   private $affectee_a;
   
   /**
-   * @ORM\Column(type="date")
+   * @ORM\Column(type="datetime")
    * @Assert\Blank()
    */
   private $date_soumission;
   
    /**
-   * @ORM\Column(type="date")
+   * @ORM\Column(type="datetime")
    * @Assert\Blank()
    */
   private $due_le;
@@ -66,6 +66,80 @@ class action_projet
    * @Assert\Blank()
    */
   private $fermee;
+  
+   /**
+   * @ORM\Column(type="text", nullable=true)
+   * @Assert\Blank()
+   */
+  private $note;
+  
+  /**
+   * @ORM\ManyToOne(targetEntity="users")
+   * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", nullable=true)
+   * @Assert\Blank()
+   */
+  private $users_id;
+  
+   /**
+   * @ORM\ManyToOne(targetEntity="syst_phase")
+   * @ORM\JoinColumn(name="phase_id", referencedColumnName="phase_id", nullable=false)
+   * @Assert\NotBlank()
+   */
+  private $phase_id;
+  
+   /**
+   * @ORM\Column(type="integer", nullable=true)
+   * @Assert\Blank()
+   */
+  private $atachee;
+  
+   /**
+   * @ORM\Column(type="integer", nullable=true)
+   * @Assert\Blank()
+   */
+  private $visible_client;
+  
+  /**
+   * @ORM\Column(type="integer", nullable=true)
+   * @Assert\Blank()
+   */
+  private $suivi_projet_id;
+  
+  /**
+   * @ORM\Column(type="integer", nullable=true)
+   * @Assert\Blank()
+   */
+  private $etape_id;
+  
+   /**
+   * @ORM\Column(type="integer", nullable=true)
+   * @Assert\Blank()
+   */
+  private $tache;
+  
+  /**
+   * @ORM\Column(type="float", nullable=true)
+   * @Assert\Blank()
+   */
+  private $effort_consomme;
+  
+  /**
+   * @ORM\Column(type="float", nullable=true)
+   * @Assert\Blank()
+   */
+  private $effort_estime;
+  
+   /**
+   * @ORM\Column(type="float", nullable=true)
+   * @Assert\Blank()
+   */
+  private $effort_facturable;
+  
+  /**
+   * @ORM\Column(type="float", nullable=true)
+   * @Assert\Blank()
+   */
+  private $raf;
 
 }
 
